@@ -158,7 +158,7 @@
                   { "$ref": "#/components/DeviceMessages" },
                   { "$ref": "#/components/DeviceMessagesEx" }
                 ]
-              },
+              }
             },
             "minProperties": 3,
             "maxProperties": 3,
@@ -626,7 +626,7 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1
-              },
+              }
             },
             "minProperties": 3,
             "maxProperties": 3,
@@ -636,8 +636,8 @@
               "Speed",
               "Position"
             ]
-          },
-        },
+          }
+        }
       },
       "minProperties": 3,
       "maxProperties": 3,
