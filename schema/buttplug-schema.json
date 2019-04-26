@@ -497,6 +497,43 @@
         "BatteryLevel"
       ]
     },
+    "RSSILevelCmd": {
+      "type": "object",
+      "description": "Requests that a RSSI level be retreived.",
+      "properties": {
+        "Id": { "$ref": "#/components/Id" },
+        "DeviceIndex": { "$ref": "#/components/DeviceIndex" }
+      },
+      "minProperties": 2,
+      "maxProperties": 2,
+      "additionalProperties": false,
+      "required": [
+        "Id",
+        "DeviceIndex"
+      ]
+    },
+    "RSSILevelReading": {
+      "type": "object",
+      "description": "Returns a BatteryLevel read from a device.",
+      "properties": {
+        "Id": { "$ref": "#/components/Id" },
+        "DeviceIndex": { "$ref": "#/components/DeviceIndex" },
+        "RSSILevel": {
+          "description": "RSSI Level",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "minProperties": 3,
+      "maxProperties": 3,
+      "additionalProperties": false,
+      "required": [
+        "Id",
+        "DeviceIndex",
+        "RSSILevel"
+      ]
+    },
     "VorzeA10CycloneCmd": {
       "type": "object",
       "description": "Sends a raw byte string to a Kiiroo Onyx/Pearl device.",
