@@ -754,7 +754,11 @@
       "VorzeA10CycloneCmd": { "$ref": "#/messages/VorzeA10CycloneCmd" },
       "VibrateCmd": { "$ref": "#/messages/VibrateCmd" },
       "RotateCmd": { "$ref": "#/messages/RotateCmd" },
-      "LinearCmd": { "$ref": "#/messages/LinearCmd" }
+      "LinearCmd": { "$ref": "#/messages/LinearCmd" },
+      "BatteryLevelCmd": { "$ref": "#/messages/BatteryLevelCmd" },
+      "BatteryLevelReading": { "$ref": "#/messages/BatteryLevelReading" },
+      "RSSILevelCmd": { "$ref": "#/messages/RSSILevelCmd" },
+      "RSSILevelReading": { "$ref": "#/messages/RSSILevelReading" }
     },
     "additionalProperties": false,
     "minProperties": 1,
