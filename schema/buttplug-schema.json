@@ -26,6 +26,7 @@
       "minimum": 0
     },
     "IdMessage": {
+      "description": "Message types that are expected to have an Id and nothing else.",
       "properties": {
         "Id": { "$ref": "#/components/Id" }
       },
