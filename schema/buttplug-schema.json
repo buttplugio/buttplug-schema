@@ -420,6 +420,10 @@
       "properties": {
         "Id": { "$ref": "#/components/Id" },
         "DeviceIndex": { "$ref": "#/components/DeviceIndex" },
+        "Endpoint": {
+          "type": "string",
+          "description": "Endpoint (from device config file) to send command to."
+        },
         "Command": {
           "description": "Raw byte string to send to device.",
           "type": "array",
@@ -431,13 +435,65 @@
           }
         }
       },
+      "minProperties": 4,
+      "maxProperties": 4,
+      "additionalProperties": false,
+      "required": [
+        "Id",
+        "Endpoint",
+        "DeviceIndex",
+        "Command"
+      ]
+    },
+    "RawDataCmd": {
+      "type": "object",
+      "description": "Request a raw byte array from a device. Should only be used for testing/development.",
+      "properties": {
+        "Id": { "$ref": "#/components/Id" },
+        "DeviceIndex": { "$ref": "#/components/DeviceIndex" },
+        "Endpoint": {
+          "type": "string",
+          "description": "Endpoint (from device config file) from which the data was retrieved."
+        }
+      },
       "minProperties": 3,
       "maxProperties": 3,
       "additionalProperties": false,
       "required": [
         "Id",
+        "Endpoint",
+        "DeviceIndex"
+      ]
+    },
+    "RawDataReading": {
+      "type": "object",
+      "description": "Raw byte array from a device. Should only be used for testing/development.",
+      "properties": {
+        "Id": { "$ref": "#/components/Id" },
+        "DeviceIndex": { "$ref": "#/components/DeviceIndex" },
+        "Endpoint": {
+          "type": "string",
+          "description": "Endpoint (from device config file) from which the data was retrieved."
+        },
+        "Command": {
+          "description": "Raw byte string received from device.",
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255,
+            "minItems": 1
+          }
+        }
+      },
+      "minProperties": 4,
+      "maxProperties": 4,
+      "additionalProperties": false,
+      "required": [
+        "Id",
+        "Endpoint",
         "DeviceIndex",
-        "Command"
+        "Reading"
       ]
     },
     "KiirooCmd": {
@@ -751,6 +807,8 @@
       "SingleMotorVibrateCmd": { "$ref": "#/messages/SingleMotorVibrateCmd" },
       "KiirooCmd": { "$ref": "#/messages/KiirooCmd" },
       "RawCmd": { "$ref": "#/messages/RawCmd" },
+      "RawDataCmd": { "$ref": "#/messages/RawDataCmd" },
+      "RawDataReading": { "$ref": "#/messages/RawDataReading" },
       "VorzeA10CycloneCmd": { "$ref": "#/messages/VorzeA10CycloneCmd" },
       "VibrateCmd": { "$ref": "#/messages/VibrateCmd" },
       "RotateCmd": { "$ref": "#/messages/RotateCmd" },
