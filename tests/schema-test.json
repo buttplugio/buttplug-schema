@@ -1,0 +1,140 @@
+[
+  {
+    "Description": "Ok Message",
+    "Messages": [
+      {
+        "Ok": {
+          "Id": 1
+        }
+      }
+    ],
+    "Tests": [
+      "ShouldPassParse",
+      "ShouldFailOnExtraField"
+    ]
+  },
+  {
+    "Description": "Error Message",
+    "Messages": [
+      {
+        "Error": {
+          "Id": 0,
+          "ErrorMessage": "Server received invalid JSON.",
+          "ErrorCode": 3
+        }
+      }
+    ],
+    "Tests": [
+      "ShouldPassParse",
+      "ShouldFailOnExtraField"
+    ]
+  },
+  {
+    "Description": "Ping Message",
+    "Messages": [
+      {
+        "Ping": {
+          "Id": 5
+        }
+      }
+    ],
+    "Tests": [
+      "ShouldPassParse",
+      "ShouldFailOnExtraField"
+    ]
+  },
+  {
+    "Description": "Test Message",
+    "Messages": [
+      {
+        "Test": {
+          "Id": 5,
+          "TestString": "Moo"
+        }
+      }
+    ],
+    "Tests": [
+      "ShouldPassParse",
+      "ShouldFailOnExtraField"
+    ]
+  },
+  {
+    "Description": "RequestLog Message",
+    "Messages": [
+      {
+        "RequestLog": {
+          "Id": 1,
+          "LogLevel": "Warn"
+        }
+      }
+    ],
+    "Tests": [
+      "ShouldPassParse",
+      "ShouldFailOnExtraField"
+    ]
+  },
+  {
+    "Description": "RequestLog Message with invalid level",
+    "Messages": [
+      {
+        "RequestLog": {
+          "Id": 1,
+          "LogLevel": "NotALevel"
+        }
+      }
+    ],
+    "Tests": [
+      "ShouldFailParse"
+    ]
+  },
+  {
+    "Description": "Log Message",
+    "Messages": [
+      {
+        "Log": {
+          "Id": 0,
+          "LogLevel": "Trace",
+          "LogMessage": "This is a Log Message."
+        }
+      }
+    ],
+    "Tests": [
+      "ShouldPassParse",
+      "ShouldFailOnExtraField"
+    ]
+  },
+  {
+    "Description": "Array with no elements",
+    "Messages": [],
+    "Tests": [
+      "ShouldFailParse"
+    ]
+  },
+  {
+    "Description": "Array with null object",
+    "Messages": [{}],
+    "Tests": [
+      "ShouldFailParse"
+    ]
+  },
+  {
+    "Description": "DeviceAdded should Pass with FeatureCount and StepCount",
+    "Messages": [
+      {
+        "DeviceAdded": {
+          "Id": 0,
+          "DeviceName": "TestDevice 1",
+          "DeviceIndex": 0,
+          "DeviceMessages": {
+            "SingleMotorVibrateCmd": {},
+            "VibrateCmd": { "FeatureCount": 2, "StepCount": [20, 20] },
+            "StopDeviceCmd": {}
+          }
+        }
+      }
+    ],
+    "Tests": [
+      "ShouldPassParse"
+    ]
+  }
+]
