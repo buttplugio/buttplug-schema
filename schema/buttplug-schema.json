@@ -52,7 +52,7 @@
       "minProperties": 0,
       "maxProperties": 0
     },
-    "MessageAttributes": {
+    "GenericMessageAttributes": {
       "description": "Attributes for device messages.",
       "type": "object",
       "properties": {
@@ -62,20 +62,39 @@
       "additionalProperties": false,
       "minProperties": 0
     },
+    "RawMessageAttributes": {
+      "description": "Attributes for device messages.",
+      "type": "object",
+      "properties": {
+        "Endpoints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minItems": 1
+          }
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 0
+    },
     "DeviceMessagesEx": {
       "description": "A list of the messages a device will accept on this server implementation.",
       "type": "object",
       "properties": {
         "StopDeviceCmd": { "$ref": "#/components/NullMessageAttributes" },
-        "VibrateCmd": { "$ref": "#/components/MessageAttributes" },
-        "LinearCmd": { "$ref": "#/components/MessageAttributes" },
-        "RotateCmd": { "$ref": "#/components/MessageAttributes" },
+        "VibrateCmd": { "$ref": "#/components/GenericMessageAttributes" },
+        "LinearCmd": { "$ref": "#/components/GenericMessageAttributes" },
+        "RotateCmd": { "$ref": "#/components/GenericMessageAttributes" },
         "LovenseCmd": { "$ref": "#/components/NullMessageAttributes" },
         "VorzeA10CycloneCmd": { "$ref": "#/components/NullMessageAttributes" },
         "KiirooCmd": { "$ref": "#/components/NullMessageAttributes" },
         "SingleMotorVibrateCmd": { "$ref": "#/components/NullMessageAttributes" },
-        "BatteryLevelCmd": { "$ref": "#/components/MessageAttributes" },
-        "RSSILevelCmd": { "$ref": "#/components/MessageAttributes" }
+        "BatteryLevelCmd": { "$ref": "#/components/NullMessageAttributes" },
+        "RSSILevelCmd": { "$ref": "#/components/NullMessageAttributes" },
+        "RawReadCmd": { "$ref": "#/components/RawMessageAttributes" },
+        "RawWriteCmd": { "$ref": "#/components/RawMessageAttributes" },
+        "RawSubscribeCmd": { "$ref": "#/components/RawMessageAttributes" },
+        "RawUnsubscribeCmd": { "$ref": "#/components/RawMessageAttributes" }
       }
     },
     "SystemIdMessage": {
@@ -415,7 +434,7 @@
         "Speed"
       ]
     },
-    "RawCmd": {
+    "RawWriteCmd": {
       "type": "object",
       "description": "Sends a raw byte array to a device. Should only be used for testing/development.",
       "properties": {
@@ -425,7 +444,7 @@
           "type": "string",
           "description": "Endpoint (from device config file) to send command to."
         },
-        "Command": {
+        "Data": {
           "description": "Raw byte string to send to device.",
           "type": "array",
           "items": {
@@ -441,12 +460,41 @@
         "Id",
         "Endpoint",
         "DeviceIndex",
-        "Command"
+        "Data"
       ]
     },
-    "RawDataCmd": {
+    "RawReadCmd": {
       "type": "object",
       "description": "Request a raw byte array from a device. Should only be used for testing/development.",
+      "properties": {
+        "Id": { "$ref": "#/components/Id" },
+        "DeviceIndex": { "$ref": "#/components/DeviceIndex" },
+        "Endpoint": {
+          "type": "string",
+          "description": "Endpoint (from device config file) from which the data was retrieved."
+        },
+        "Length": {
+          "type": "integer",
+          "description": "Amount of data to read from device, 0 to exhaust whatever is in immediate buffer",
+          "minimum": 0
+        },
+        "WaitForData": {
+          "type": "boolean",
+          "description": "If true, then wait until Length amount of data is available."
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "Id",
+        "Endpoint",
+        "DeviceIndex",
+        "Length",
+        "WaitForData"
+      ]
+    },
+    "RawSubscribeCmd": {
+      "type": "object",
+      "description": "Subscribe to an endpoint on a device to receive raw info back.",
       "properties": {
         "Id": { "$ref": "#/components/Id" },
         "DeviceIndex": { "$ref": "#/components/DeviceIndex" },
@@ -462,9 +510,27 @@
         "DeviceIndex"
       ]
     },
-    "RawDataReading": {
+    "RawUnsubscribeCmd": {
       "type": "object",
-      "description": "Raw byte array from a device. Should only be used for testing/development.",
+      "description": "Unsubscribe to an endpoint on a device.",
+      "properties": {
+        "Id": { "$ref": "#/components/Id" },
+        "DeviceIndex": { "$ref": "#/components/DeviceIndex" },
+        "Endpoint": {
+          "type": "string",
+          "description": "Endpoint (from device config file) from which the data was retrieved."
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "Id",
+        "Endpoint",
+        "DeviceIndex"
+      ]
+    },
+    "RawReading": {
+      "type": "object",
+      "description": "Raw byte array received from a device. Should only be used for testing/development.",
       "properties": {
         "Id": { "$ref": "#/components/Id" },
         "DeviceIndex": { "$ref": "#/components/DeviceIndex" },
@@ -472,7 +538,7 @@
           "type": "string",
           "description": "Endpoint (from device config file) from which the data was retrieved."
         },
-        "Command": {
+        "Data": {
           "description": "Raw byte string received from device.",
           "type": "array",
           "items": {
@@ -776,9 +842,11 @@
       "LovenseCmd": { "$ref": "#/messages/LovenseCmd" },
       "SingleMotorVibrateCmd": { "$ref": "#/messages/SingleMotorVibrateCmd" },
       "KiirooCmd": { "$ref": "#/messages/KiirooCmd" },
-      "RawCmd": { "$ref": "#/messages/RawCmd" },
-      "RawDataCmd": { "$ref": "#/messages/RawDataCmd" },
-      "RawDataReading": { "$ref": "#/messages/RawDataReading" },
+      "RawReadCmd": { "$ref": "#/messages/RawReadCmd" },
+      "RawWriteCmd": { "$ref": "#/messages/RawWriteCmd" },
+      "RawSubscribeCmd": { "$ref": "#/messages/RawSubscribeCmd" },
+      "RawUnsubscribeCmd": { "$ref": "#/messages/RawUnsubscribeCmd" },
+      "RawReading": { "$ref": "#/messages/RawReading" },
       "VorzeA10CycloneCmd": { "$ref": "#/messages/VorzeA10CycloneCmd" },
       "VibrateCmd": { "$ref": "#/messages/VibrateCmd" },
       "RotateCmd": { "$ref": "#/messages/RotateCmd" },
