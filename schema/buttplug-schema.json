@@ -84,8 +84,6 @@
         "Id": { "$ref": "#/components/SystemId" }
       },
       "additionalProperties": false,
-      "minProperties": 1,
-      "maxProperties": 1,
       "required": [
         "Id"
       ]
@@ -96,8 +94,6 @@
         "DeviceIndex": { "$ref": "#/components/DeviceIndex" }
       },
       "additionalProperties": false,
-      "minProperties": 2,
-      "maxProperties": 2,
       "required": [
         "Id",
         "DeviceIndex"
@@ -144,8 +140,6 @@
         }
       },
       "additionalProperties": false,
-      "minProperties": 3,
-      "maxProperties": 3,
       "required": [
         "Id",
         "ErrorMessage",
@@ -162,8 +156,6 @@
           "type": "string"
         }
       },
-      "minProperties": 2,
-      "maxProperties": 2,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -190,8 +182,6 @@
                 ]
               }
             },
-            "minProperties": 3,
-            "maxProperties": 3,
             "additionalProperties": false,
             "required": [
               "DeviceName",
@@ -203,8 +193,6 @@
           "minItems": 0
         }
       },
-      "minProperties": 2,
-      "maxProperties": 2,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -225,8 +213,6 @@
           ]
         }
       },
-      "minProperties": 4,
-      "maxProperties": 4,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -270,8 +256,6 @@
           "enum": [ "Off", "Fatal", "Error", "Warn", "Info", "Debug", "Trace" ]
         }
       },
-      "minProperties": 2,
-      "maxProperties": 2,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -292,8 +276,6 @@
           "type": "string"
         }
       },
-      "minProperties": 3,
-      "maxProperties": 3,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -316,8 +298,6 @@
           "minimum": 0
         }
       },
-      "minProperties": 2,
-      "maxProperties": 3,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -359,8 +339,6 @@
           "minimum": 0
         }
       },
-      "minProperties": 7,
-      "maxProperties": 7,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -391,8 +369,6 @@
           "maximum": 99
         }
       },
-      "minProperties": 4,
-      "maxProperties": 4,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -412,8 +388,6 @@
           "type": "string"
         }
       },
-      "minProperties": 3,
-      "maxProperties": 3,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -434,8 +408,6 @@
           "maximum": 1
         }
       },
-      "minProperties": 3,
-      "maxProperties": 3,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -464,8 +436,6 @@
           }
         }
       },
-      "minProperties": 4,
-      "maxProperties": 4,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -485,8 +455,6 @@
           "description": "Endpoint (from device config file) from which the data was retrieved."
         }
       },
-      "minProperties": 3,
-      "maxProperties": 3,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -515,8 +483,6 @@
           }
         }
       },
-      "minProperties": 4,
-      "maxProperties": 4,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -536,8 +502,6 @@
           "type": "string"
         }
       },
-      "minProperties": 3,
-      "maxProperties": 3,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -552,8 +516,6 @@
         "Id": { "$ref": "#/components/Id" },
         "DeviceIndex": { "$ref": "#/components/DeviceIndex" }
       },
-      "minProperties": 2,
-      "maxProperties": 2,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -573,8 +535,6 @@
           "maximum": 1
         }
       },
-      "minProperties": 3,
-      "maxProperties": 3,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -589,8 +549,6 @@
         "Id": { "$ref": "#/components/Id" },
         "DeviceIndex": { "$ref": "#/components/DeviceIndex" }
       },
-      "minProperties": 2,
-      "maxProperties": 2,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -610,8 +568,6 @@
           "maximum": 1
         }
       },
-      "minProperties": 3,
-      "maxProperties": 3,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -636,8 +592,6 @@
           "type": "boolean"
         }
       },
-      "minProperties": 4,
-      "maxProperties": 4,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -653,8 +607,6 @@
         "Id": { "$ref": "#/components/Id" },
         "DeviceIndex": { "$ref": "#/components/DeviceIndex" }
       },
-      "minProperties": 2,
-      "maxProperties": 2,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -690,8 +642,6 @@
                 "maximum": 1
               }
             },
-            "minProperties": 2,
-            "maxProperties": 2,
             "additionalProperties": false,
             "required": [
               "Index",
@@ -701,8 +651,6 @@
           "minItems": 1
         }
       },
-      "minProperties": 3,
-      "maxProperties": 3,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -738,8 +686,6 @@
                 "type": "boolean"
               }
             },
-            "minProperties": 3,
-            "maxProperties": 3,
             "additionalProperties": false,
             "required": [
               "Index",
@@ -750,8 +696,6 @@
           "minItems": 1
         }
       },
-      "minProperties": 3,
-      "maxProperties": 3,
       "additionalProperties": false,
       "required": [
         "Id",
@@ -788,8 +732,6 @@
                 "maximum": 1
               }
             },
-            "minProperties": 3,
-            "maxProperties": 3,
             "additionalProperties": false,
             "required": [
               "Index",
@@ -799,8 +741,6 @@
           }
         }
       },
-      "minProperties": 3,
-      "maxProperties": 3,
       "additionalProperties": false,
       "required": [
         "Id",
