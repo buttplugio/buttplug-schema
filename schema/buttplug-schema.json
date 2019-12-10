@@ -752,6 +752,7 @@
   "type": "array",
   "items": {
     "title": "Messages",
+    "type": "object",
     "description": "One or more messages validated by the Buttplug Message schema list.",
     "properties": {
       "Ok": { "$ref": "#/messages/Ok" },
