@@ -45,17 +45,37 @@
         "minItems": 1
       }
     },
+    "NullMessageAttributes": {
+      "description": "Attributes for device message that have no attributes.",
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 0,
+      "maxProperties": 0
+    },
+    "MessageAttributes": {
+      "description": "Attributes for device messages.",
+      "type": "object",
+      "properties": {
+        "FeatureCount": { "$ref": "#/components/FeatureCount" },
+        "StepCount": { "$ref": "#/components/StepCount" }
+      },
+      "additionalProperties": false,
+      "minProperties": 0
+    },
     "DeviceMessagesEx": {
       "description": "A list of the messages a device will accept on this server implementation.",
       "type": "object",
-      "items": {
-        "description": "A list of the messages attributes.",
-        "type": "object",
-        "properties": {
-          "FeatureCount": { "$ref": "#/components/FeatureCount" }
-        },
-        "additionalProperties": false,
-        "minItems": 1
+      "properties": {
+        "StopDeviceCmd": { "$ref": "#/components/NullMessageAttributes" },
+        "VibrateCmd": { "$ref": "#/components/MessageAttributes" },
+        "LinearCmd": { "$ref": "#/components/MessageAttributes" },
+        "RotateCmd": { "$ref": "#/components/MessageAttributes" },
+        "LovenseCmd": { "$ref": "#/components/NullMessageAttributes" },
+        "VorzeA10CycloneCmd": { "$ref": "#/components/NullMessageAttributes" },
+        "KiirooCmd": { "$ref": "#/components/NullMessageAttributes" },
+        "SingleMotorVibrateCmd": { "$ref": "#/components/NullMessageAttributes" },
+        "BatteryLevelCmd": { "$ref": "#/components/MessageAttributes" },
+        "RSSILevelCmd": { "$ref": "#/components/MessageAttributes" }
       }
     },
     "SystemIdMessage": {
@@ -86,7 +106,16 @@
     "FeatureCount": {
       "description": "Number of features on device.",
       "type": "integer",
-      "minimum": 0
+      "minimum": 1
+    },
+    "StepCount": {
+      "description": "Specifies granularity of each feature on the device.",
+      "type": "array",
+      "items": {
+        "minimum": 1,
+        "type": "integer"
+      },
+      "minItems": 1
     }
   },
   "messages": {
