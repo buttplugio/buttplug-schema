@@ -95,7 +95,8 @@
         "RawWriteCmd": { "$ref": "#/components/RawMessageAttributes" },
         "RawSubscribeCmd": { "$ref": "#/components/RawMessageAttributes" },
         "RawUnsubscribeCmd": { "$ref": "#/components/RawMessageAttributes" }
-      }
+      },
+      "additionalProperties": false
     },
     "SystemIdMessage": {
       "description": "Message sent by the server that is not in direct reply to a message send from the client, and always uses system Id.",
