@@ -63,7 +63,7 @@
       "minProperties": 0
     },
     "RawMessageAttributes": {
-      "description": "Attributes for device messages.",
+      "description": "Attributes for raw device messages.",
       "type": "object",
       "properties": {
         "Endpoints": {
@@ -71,6 +71,33 @@
           "items": {
             "type": "string",
             "minItems": 1
+          }
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 0
+    },
+    "PatternMessageAttributes": {
+      "description": "Attributes for PatternPlaybackCmd.",
+      "type": "object",
+      "properties": {
+        "FeatureCount": { "$ref": "#/components/FeatureCount" },
+        "StepCount": { "$ref": "#/components/StepCount" },
+        "ActuatorType": {
+          "description": "Types of actuators for pattern playback (Vibrate, Rotate, Linear)",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Patterns": {
+          "description": "Names of patterns to play back, per actuator.",
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -94,7 +121,8 @@
         "RawReadCmd": { "$ref": "#/components/RawMessageAttributes" },
         "RawWriteCmd": { "$ref": "#/components/RawMessageAttributes" },
         "RawSubscribeCmd": { "$ref": "#/components/RawMessageAttributes" },
-        "RawUnsubscribeCmd": { "$ref": "#/components/RawMessageAttributes" }
+        "RawUnsubscribeCmd": { "$ref": "#/components/RawMessageAttributes" },
+        "PatternPlaybackCmd": { "$ref": "#/components/PatternMessageAttributes" }
       },
       "additionalProperties": false
     },
@@ -814,6 +842,43 @@
         "DeviceIndex",
         "Vectors"
       ]
+    },
+    "PatternPlaybackCmd": {
+      "type": "object",
+      "description": "Sends a pattern command to a device that supports pattern playback.",
+      "properties": {
+        "Id": { "$ref": "#/components/Id" },
+        "DeviceIndex": { "$ref": "#/components/DeviceIndex" },
+        "Patterns": {
+          "description": "List of patterns to play across actuators",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "Index": {
+                "description": "actuator number.",
+                "type": "integer",
+                "minimum": 0
+              },
+              "Pattern": {
+                "description": "Name of pattern of play.",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "Index",
+              "Pattern"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "Id",
+        "DeviceIndex",
+        "Patterns"
+      ]
     }
   },
   "type": "array",
@@ -855,7 +920,8 @@
       "BatteryLevelCmd": { "$ref": "#/messages/BatteryLevelCmd" },
       "BatteryLevelReading": { "$ref": "#/messages/BatteryLevelReading" },
       "RSSILevelCmd": { "$ref": "#/messages/RSSILevelCmd" },
-      "RSSILevelReading": { "$ref": "#/messages/RSSILevelReading" }
+      "RSSILevelReading": { "$ref": "#/messages/RSSILevelReading" },
+      "PatternPlaybackCmd": { "$ref": "#/messages/PatternPlaybackCmd" }
     },
     "additionalProperties": false,
     "minProperties": 1,
