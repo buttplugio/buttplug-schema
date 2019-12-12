@@ -977,7 +977,7 @@
             "additionalProperties": false,
             "required": [
               "Index",
-              "Strength",
+              "Volume",
               "Duration"
             ]
           }
@@ -987,7 +987,7 @@
       "required": [
         "Id",
         "DeviceIndex",
-        "Shocks"
+        "Tones"
       ]
     }
   },
