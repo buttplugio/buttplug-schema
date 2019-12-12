@@ -141,7 +141,8 @@
         "RawSubscribeCmd": { "$ref": "#/components/RawMessageAttributes" },
         "RawUnsubscribeCmd": { "$ref": "#/components/RawMessageAttributes" },
         "PatternPlaybackCmd": { "$ref": "#/components/PatternMessageAttributes" },
-        "ShockCmd": { "$ref": "#/components/ShockMessageAttributes" }
+        "ShockCmd": { "$ref": "#/components/ShockMessageAttributes" },
+        "ToneEmitterCmd": { "$ref": "#/components/GenericMessageAttributes" }
       },
       "additionalProperties": false
     },
@@ -942,6 +943,50 @@
         "DeviceIndex",
         "Shocks"
       ]
+    },
+    "ToneEmitterCmd": {
+      "type": "object",
+      "description": "Make a device emit a tone (assuming it has a beeper/speaker)",
+      "properties": {
+        "Id": { "$ref": "#/components/Id" },
+        "DeviceIndex": { "$ref": "#/components/DeviceIndex" },
+        "Tones": {
+          "description": "List of tones to run across beepers/speakers",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "Index": {
+                "description": "Actuator number.",
+                "type": "integer",
+                "minimum": 0
+              },
+              "Volume": {
+                "description": "Volume level (as denoted by StepCount in MessageAttributes).",
+                "type": "number",
+                "minimum": 0
+              },
+              "Duration": {
+                "description": "Duration of tone in milliseconds.",
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "Index",
+              "Strength",
+              "Duration"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "Id",
+        "DeviceIndex",
+        "Shocks"
+      ]
     }
   },
   "type": "array",
@@ -985,7 +1030,8 @@
       "RSSILevelCmd": { "$ref": "#/messages/RSSILevelCmd" },
       "RSSILevelReading": { "$ref": "#/messages/RSSILevelReading" },
       "PatternPlaybackCmd": { "$ref": "#/messages/PatternPlaybackCmd" },
-      "ShockCmd": { "$ref": "#/messages/ShockCmd" }
+      "ShockCmd": { "$ref": "#/messages/ShockCmd" },
+      "ToneEmitterCmd": { "$ref": "#/messages/ToneEmitterCmd" }
     },
     "additionalProperties": false,
     "minProperties": 1,
