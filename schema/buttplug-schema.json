@@ -104,6 +104,24 @@
       "additionalProperties": false,
       "minProperties": 0
     },
+    "ShockMessageAttributes": {
+      "description": "Attributes for ShockCmd.",
+      "type": "object",
+      "properties": {
+        "FeatureCount": { "$ref": "#/components/FeatureCount" },
+        "StepCount": { "$ref": "#/components/StepCount" },
+        "MaxDuration": {
+          "description": "Maximum duration of shock for each actuator",
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 0
+    },
     "DeviceMessagesEx": {
       "description": "A list of the messages a device will accept on this server implementation.",
       "type": "object",
@@ -122,7 +140,8 @@
         "RawWriteCmd": { "$ref": "#/components/RawMessageAttributes" },
         "RawSubscribeCmd": { "$ref": "#/components/RawMessageAttributes" },
         "RawUnsubscribeCmd": { "$ref": "#/components/RawMessageAttributes" },
-        "PatternPlaybackCmd": { "$ref": "#/components/PatternMessageAttributes" }
+        "PatternPlaybackCmd": { "$ref": "#/components/PatternMessageAttributes" },
+        "ShockCmd": { "$ref": "#/components/ShockMessageAttributes" }
       },
       "additionalProperties": false
     },
@@ -879,6 +898,50 @@
         "DeviceIndex",
         "Patterns"
       ]
+    },
+    "ShockCmd": {
+      "type": "object",
+      "description": "Sends a shock to devices that support them (Shock collars/bracelets, possibly estim).",
+      "properties": {
+        "Id": { "$ref": "#/components/Id" },
+        "DeviceIndex": { "$ref": "#/components/DeviceIndex" },
+        "Shocks": {
+          "description": "List of shocks to run across actuators",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "Index": {
+                "description": "Actuator number.",
+                "type": "integer",
+                "minimum": 0
+              },
+              "Strength": {
+                "description": "Strength of shock.",
+                "type": "number",
+                "minimum": 0
+              },
+              "Duration": {
+                "description": "Duration of shock (not to exceed MaxDuration defined in MessageAttributes).",
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "Index",
+              "Strength",
+              "Duration"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "Id",
+        "DeviceIndex",
+        "Shocks"
+      ]
     }
   },
   "type": "array",
@@ -921,7 +984,8 @@
       "BatteryLevelReading": { "$ref": "#/messages/BatteryLevelReading" },
       "RSSILevelCmd": { "$ref": "#/messages/RSSILevelCmd" },
       "RSSILevelReading": { "$ref": "#/messages/RSSILevelReading" },
-      "PatternPlaybackCmd": { "$ref": "#/messages/PatternPlaybackCmd" }
+      "PatternPlaybackCmd": { "$ref": "#/messages/PatternPlaybackCmd" },
+      "ShockCmd": { "$ref": "#/messages/ShockCmd" }
     },
     "additionalProperties": false,
     "minProperties": 1,
