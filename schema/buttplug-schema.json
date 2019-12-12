@@ -880,12 +880,17 @@
               "Pattern": {
                 "description": "Name of pattern of play.",
                 "type": "string"
+              },
+              "Strength": {
+                "description": "Strength/scaling to play pattern at.",
+                "type": "number"
               }
             },
             "additionalProperties": false,
             "required": [
               "Index",
-              "Pattern"
+              "Pattern",
+              "Strength"
             ]
           }
         }
