@@ -600,7 +600,7 @@
         "Id",
         "Endpoint",
         "DeviceIndex",
-        "Reading"
+        "Data"
       ]
     },
     "KiirooCmd": {
