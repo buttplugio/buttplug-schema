@@ -410,9 +410,6 @@
       "additionalProperties": false,
       "required": [
         "Id",
-        "MajorVersion",
-        "MinorVersion",
-        "BuildVersion",
         "MessageVersion",
         "MaxPingTime",
         "ServerName"
