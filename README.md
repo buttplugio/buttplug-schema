@@ -1,3 +1,7 @@
+## Buttplug Message Format JSON Schema - DEPRECATED AND ARCHIVED
+
+Now that we've converged to a single core implementation in [buttplug-rs](https://github.com/buttplugio/buttplug-rs), there's no reason to keep this separate from the implementation itself. This repo will no longer be updated, and the schema will now live in the buttplug-rs repo at `/buttplug/buttplug-schema`. 
+
 # Buttplug Message Format JSON Schema
 
 [![Build Status](https://img.shields.io/travis/metafetish/buttplug-schema.svg)](https://travis-ci.org/buttplugio/buttplug-schema) 
